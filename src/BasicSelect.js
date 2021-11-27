@@ -4,28 +4,30 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import modelList from '../src/ressources/models.json'
 
 export default function BasicSelect() {
-  const [age, setAge] = React.useState('');
+  const [model, setModel] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setModel(event.target.value);
+    console.log(model)
   };
 
+  const items = modelList.map(model => <MenuItem value={model}>{model}</MenuItem>)  
+
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 300 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">Model</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={model}
+          label="Model"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {items}
         </Select>
       </FormControl>
     </Box>
