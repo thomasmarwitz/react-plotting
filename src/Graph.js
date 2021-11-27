@@ -1,48 +1,60 @@
-import React, { Component } from "react"
-import { Line } from "react-chartjs-2"
+import React from 'react';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import faker from 'faker';
 
-const styles = {
-    display: "flex",
-    justifyContent: "center",
-}
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Line Chart',
+    },
+  },
+};
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    },
+    {
+      label: 'Dataset 2',
+      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
 
 export default function Graph(props) {
-        
-    /*
-    const data2 = {
-    labels: [],// years,
-    datasets: [
-          {
-              label: "",// name
-              data: [], // y values
-              borderColor: "hex",
-              fill: false,
-          }
-        ]
-    };*/
-
-    const data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-        datasets: [
-          {
-            label: "Line 1",
-            data: [33, 25, 35, 51, 54, 76],
-            fill: false,
-            borderColor: "#742774"
-          }
-        ]
-    };
-
-
-
-    return (
-        <div style={styles}>
-            <Line
-                data={data}
-                width={400}
-                height={400}
-                options={{}}
-            />
-        </div>
-    )
+  return <Line options={options} data={data} />;
 }
