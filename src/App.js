@@ -31,8 +31,7 @@ export default function App() {
     
     const [model, setModel] = React.useState('');
     const [year, setYear] = React.useState('');
-    const [graph, setGraph] = React.useState(parseData(DATA))
-    console.log(modelData.slice(0, 10))
+    const [data, setData] = React.useState(parseData(DATA))
 
     const handleModelChange = (event) => {
         setModel(event.target.value);
@@ -42,11 +41,12 @@ export default function App() {
         setYear(event.target.value);
     }
 
+    /*
     const handleCalculateOffset = (event) => {
         if (!model || !year) {
             return
         }
-        setGraph(
+        setData(
             parseData(
                 DATA, // provide data
                 {
@@ -56,13 +56,12 @@ export default function App() {
             )
         )
     }
+    */
     
     return (
         <div>
             <Graph 
-                graph={graph}
-                width={"1000"}
-                type={"line"}
+                data={data}
             />
             <div style={styles}>
                 <BasicSelect 
@@ -75,7 +74,7 @@ export default function App() {
                 <Button 
                     variant="contained"
                     style={{margin: "5px"}}
-                    onClick={handleCalculateOffset}
+                    onClick={console.log("")}
                 >
                     Calculate Offset
                 </Button>

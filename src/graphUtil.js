@@ -69,12 +69,13 @@ export function parseData(modelData, referenceLine) {
     // transform time series of each model obj
     const ySeries = modelData.map(modelObj => {        
             return {
-                name: modelObj.model,
+                label: modelObj.model,
                 data: modelObj.y.map(number => number.toFixed(2)),
+                borderColor: modelObj.plotstyle.color,
             }
         }
     ) 
-    const colors = modelData.map(modelObj => colourNameToHex(modelObj.plotstyle.color))
+
     const strokes = modelData.map(modelObj => convertToStrokeStyle(modelObj.plotstyle.linestyle))
     const lineWidth = modelData.map(el => 2) // default is 2
     
@@ -88,7 +89,6 @@ export function parseData(modelData, referenceLine) {
             data: refLineSeries,
         })
         lineWidth.push(3)
-        colors.push("#000")
         strokes.push(4)
     }
 
@@ -96,37 +96,8 @@ export function parseData(modelData, referenceLine) {
     // markers: "circle" | "square" | "rect"
         
     return {
-        options: {
-            chart: {
-            id: "OCTS"
-            },
-            xaxis: {
-                categories: xAxis, // jahre (x)
-            },
-            chart: {
-                animations: {
-                    enabled: false,
-                },
-                //background: "#000",
-            },
-            legend: {
-                show: false,
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            tooltip: {
-                shared: false,       
-            },
-            colors: colors,
-            stroke: {
-                width: lineWidth,
-                dashArray: strokes,
-            }
-
-        },
-        // .map(value => value.toFixed(2))
-        series: ySeries
+        labels: xAxis,
+        datasets: ySeries,
     }
 } 
 
