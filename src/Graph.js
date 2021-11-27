@@ -22,15 +22,20 @@ ChartJS.register(
   Legend
 );
 
+const styles = {
+    "maxWidth": 1200,
+    "maxHeight": 500,
+}
+
 const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top',
+      position: 'bottom',
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'OCTS',
     },
   },
 };
@@ -56,5 +61,5 @@ const data = {
 };
 
 export default function Graph(props) {
-  return <Line options={options} data={data} />;
+  return <Line style={styles} options={options} data={data} />;
 }
