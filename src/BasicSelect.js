@@ -6,20 +6,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import modelList from '../src/ressources/models.json'
 
-export default function BasicSelect() {
-  const [model, setModel] = React.useState('');
-  const [year, setYear] = React.useState('');
-
-  const handleModelChange = (event) => {
-    setModel(event.target.value);
-    console.log(event.target.value)
-  };
-
-  const handleYearChange = (event) => {
-    setYear(event.target.value);
-    console.log(event.target.value)
-  }
-
+export default function BasicSelect(props) {
+  
   const models = modelList.map(model => <MenuItem value={model}>{model}</MenuItem>)  
   const validYears = [...Array(141).keys()].map(value => `${value + 1960}`) // 1960 - 2100
   const years = validYears.map(year => <MenuItem value={year}>{year}</MenuItem>)
@@ -31,9 +19,9 @@ export default function BasicSelect() {
         <Select
           labelId="model-select-label"
           id="model-select"
-          value={model}
+          value={props.model}
           label="Model"
-          onChange={handleModelChange}
+          onChange={props.handleModelChange}
         >
           {models}
         </Select>
@@ -43,9 +31,9 @@ export default function BasicSelect() {
         <Select
           labelId="year-select-label"
           id="year-select"
-          value={year}
+          value={props.year}
           label="Year"
-          onChange={handleYearChange}
+          onChange={props.handleYearChange}
         >
           {years}
         </Select>
