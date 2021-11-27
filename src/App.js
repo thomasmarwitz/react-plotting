@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import BasicSelect from './BasicSelect'
 import Button from '@mui/material/Button'
 import Graph from './Graph'
-import { parseData } from './graphUtil'
+import { parseData } from './graphUtilApexCharts'
 import modelData from './ressources/modelData.json'
 
 const styles = {
@@ -61,6 +61,7 @@ export default function App() {
         <div>
             <Graph 
                 graph={graph}
+                data={DATA}
                 width={"1000"}
                 type={"line"}
             />
