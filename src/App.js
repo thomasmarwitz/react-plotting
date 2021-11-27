@@ -14,12 +14,14 @@ export default function App() {
 
     const handleModelChange = (event) => {
         setModel(event.target.value);
-        console.log(event.target.value)
     };
 
     const handleYearChange = (event) => {
         setYear(event.target.value);
-        console.log(event.target.value)
+    }
+
+    const handleCalculateOffset = (event) => {
+        console.log(model + " " + year)
     }
 
     
@@ -31,7 +33,13 @@ export default function App() {
                 handleModelChange={handleModelChange} 
                 handleYearChange={handleYearChange}    
             />
-            <Button variant="contained" style={{margin: "5px"}}>Calculate Offset</Button>
+            <Button 
+                variant="contained"
+                style={{margin: "5px"}}
+                onClick={handleCalculateOffset}
+            >
+                Calculate Offset
+            </Button>
         </div>
     )
     
