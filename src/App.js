@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import BasicSelect from './BasicSelect'
 import Button from '@mui/material/Button'
+import Graph from './Graph'
 
 const styles = {
     display: "flex",
     padding: "5px",
+    justifyContent: "center",
 }
 
 export default function App() {
@@ -26,20 +28,23 @@ export default function App() {
 
     
     return (
-        <div style={styles}>
-            <BasicSelect 
-                model={model}
-                year={year}
-                handleModelChange={handleModelChange} 
-                handleYearChange={handleYearChange}    
-            />
-            <Button 
-                variant="contained"
-                style={{margin: "5px"}}
-                onClick={handleCalculateOffset}
-            >
-                Calculate Offset
-            </Button>
+        <div>
+            <Graph />
+            <div style={styles}>
+                <BasicSelect 
+                    model={model}
+                    year={year}
+                    handleModelChange={handleModelChange} 
+                    handleYearChange={handleYearChange}    
+                />
+                <Button 
+                    variant="contained"
+                    style={{margin: "5px"}}
+                    onClick={handleCalculateOffset}
+                >
+                    Calculate Offset
+                </Button>
+            </div>
         </div>
     )
     
