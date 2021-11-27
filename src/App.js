@@ -28,8 +28,8 @@ export default function App() {
             <BasicSelect 
                 model={model}
                 year={year}
-                handleModelChange={this.handleModelChange} 
-                handleYearChange={this.handleYearChange}    
+                handleModelChange={handleModelChange} 
+                handleYearChange={handleYearChange}    
             />
             <Button variant="contained" style={{margin: "5px"}}>Calculate Offset</Button>
         </div>

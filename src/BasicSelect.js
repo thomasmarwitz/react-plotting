@@ -8,9 +8,9 @@ import modelList from '../src/ressources/models.json'
 
 export default function BasicSelect(props) {
   
-  const models = modelList.map(model => <MenuItem value={model}>{model}</MenuItem>)  
+  const models = modelList.map(model => <MenuItem value={model} key={model}>{model}</MenuItem>)  
   const validYears = [...Array(141).keys()].map(value => `${value + 1960}`) // 1960 - 2100
-  const years = validYears.map(year => <MenuItem value={year}>{year}</MenuItem>)
+  const years = validYears.map(year => <MenuItem value={year} key={year}>{year}</MenuItem>)
 
   return (
     <Box>
