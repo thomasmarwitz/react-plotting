@@ -9,6 +9,7 @@ import {
   } from "recharts";
 
 import { parseData } from "./graphUtilRecharts";
+import { colourNameToHex } from "./graphUtilApexCharts";
 
 
 const styles = {
@@ -66,7 +67,7 @@ export default function Graph(props) {
     const data = parseData(props.data)
     //data.xAxis
     //console.log(data.data)
-    const lines = props.data.map(el => <Line type="monotone" dataKey={el.model} stroke="#8884d8"/>)
+    const lines = props.data.map(el => <Line type="monotone" dataKey={el.model} dot={false} stroke={colourNameToHex(el.plotstyle.color)}/>)
 
     return (
         <div style={styles}>
@@ -83,7 +84,7 @@ export default function Graph(props) {
             >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="year" />
-            <YAxis />
+            <YAxis domain={[250, 400]}/>
             <Tooltip />
             <Legend />
             {lines}
