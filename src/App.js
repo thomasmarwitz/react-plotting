@@ -15,7 +15,7 @@ class App extends Component {
     render() {
         return (
             <div style={styles}>
-                <BasicSelect style={{margin: "5px"}}/>
+                <BasicSelect/>
                 <Button variant="contained" style={{margin: "5px"}}>Calculate Offset</Button>
             </div>
         )
