@@ -4,11 +4,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import modelList from '../src/ressources/models.json'
 
 export default function BasicSelect(props) {
   
-  const models = modelList.map(model => <MenuItem value={model} key={model}>{model}</MenuItem>)  
+  const models = props.data.map(obj => <MenuItem value={obj.model} key={obj.model}>{obj.model}</MenuItem>)  
   const validYears = [...Array(141).keys()].map(value => `${value + 1960}`) // 1960 - 2100
   const years = validYears.map(year => <MenuItem value={year} key={year}>{year}</MenuItem>)
 

@@ -11,11 +11,28 @@ const styles = {
     justifyContent: "center",
 }
 
+/**
+ * Shuffles array in place. ES6 version
+ * Not the best performance
+ * 
+ * @param {Array} a items An array containing the items.
+ */
+ function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+const USE_N_MODELS = 20
+const DATA = shuffle(modelData).slice(0, USE_N_MODELS)
+
 export default function App() {
     
     const [model, setModel] = React.useState('');
     const [year, setYear] = React.useState('');
-    const [graph, setGraph] = React.useState(parseData(modelData))
+    const [graph, setGraph] = React.useState(parseData(DATA))
+    console.log(modelData.slice(0, 10))
 
     const handleModelChange = (event) => {
         setModel(event.target.value);
@@ -31,7 +48,7 @@ export default function App() {
         }
         setGraph(
             parseData(
-                modelData, // provide data
+                DATA, // provide data
                 {
                     model, // model: model
                     year,  // year: year
@@ -51,6 +68,7 @@ export default function App() {
                 <BasicSelect 
                     model={model}
                     year={year}
+                    data={DATA}
                     handleModelChange={handleModelChange} 
                     handleYearChange={handleYearChange}    
                 />
