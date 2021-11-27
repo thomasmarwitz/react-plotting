@@ -64,7 +64,7 @@ function applyOffset(model, year, ySeries, xAxis) {
 
 export function parseData(modelData, referenceLine) {
     
-    const xAxis = modelData[0].x.map(string => string.substring(0,4)) // turn to years only
+    const xAxis = [...Array(141).keys()].map(value => `${value + 1960}`) // 1960 - 2100 //modelData[0].x.map(string => string.substring(0,4)) // turn to years only
     //console.log(modelData)
     // transform time series of each model obj
     const ySeries = modelData.map(modelObj => {        
