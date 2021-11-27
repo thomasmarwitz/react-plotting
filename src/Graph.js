@@ -1,8 +1,5 @@
 import React, { Component } from "react"
-import Chart from "react-apexcharts"
-import $ from 'jquery';
-import modelData from "./ressources/modelData.json"
-import {parseData} from './graphUtil'
+import { Line } from "react-chartjs-2"
 
 const styles = {
     display: "flex",
@@ -11,13 +8,40 @@ const styles = {
 
 export default function Graph(props) {
         
+    /*
+    const data2 = {
+    labels: [],// years,
+    datasets: [
+          {
+              label: "",// name
+              data: [], // y values
+              borderColor: "hex",
+              fill: false,
+          }
+        ]
+    };*/
+
+    const data = {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [
+          {
+            label: "Line 1",
+            data: [33, 25, 35, 51, 54, 76],
+            fill: false,
+            borderColor: "#742774"
+          }
+        ]
+    };
+
+
+
     return (
         <div style={styles}>
-            <Chart
-                options={props.graph.options}
-                series={props.graph.series}
-                type={props.type}
-                width={props.width}
+            <Line
+                data={data}
+                width={400}
+                height={400}
+                options={{}}
             />
         </div>
     )
