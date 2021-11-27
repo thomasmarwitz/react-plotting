@@ -65,8 +65,8 @@ export default function Graph(props) {
     console.log("parsing")
     const data = parseData(props.data)
     //data.xAxis
-    console.log(data.data)
-    
+    //console.log(data.data)
+    const lines = props.data.map(el => <Line type="monotone" dataKey={el.model} stroke="#8884d8"/>)
 
     return (
         <div style={styles}>
@@ -86,12 +86,7 @@ export default function Graph(props) {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line
-                type="monotone"
-                dataKey="pv"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-                />
+            {lines}
             </LineChart>
         </div>
     );
