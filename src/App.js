@@ -59,8 +59,12 @@ export default function App() {
     }
 
     const handleMakePdf = (event) => {
-        console.log("generating")
-        showPdf()
+        showPdf(DATA.map(modelObj => {
+            return {
+                text: `${modelObj.model} (${modelObj.plotstyle.linestyle})`,
+                color: modelObj.plotstyle.color,
+            }
+        })) // list of used models
     }
     
     return (

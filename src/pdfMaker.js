@@ -24,16 +24,23 @@ function getBase64Image() {
        });
 }
 
-export async function showPdf() {
+export async function showPdf(models) {
     const docDefinition = {
       content: [
         {
-          text: 'PDF Generated with Image from Chart',
-          fontSize: 20,
+          text: 'OCTS Plot from 1960 - 2100',
+          fontSize: 26,
         },
         {
           image: await getBase64Image(),
           width: 500,
+        },
+        {
+            text: 'List of used models:',
+            fontSize: 18,
+        },
+        {
+            ul: models
         },
       ],
     };
