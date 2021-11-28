@@ -33,6 +33,7 @@ export async function showPdf() {
         },
         {
           image: await getBase64Image(),
+          width: 500,
         },
       ],
     };
