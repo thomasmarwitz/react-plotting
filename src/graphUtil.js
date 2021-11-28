@@ -122,7 +122,8 @@ export function parseData(modelData, referenceLine) {
                 enabled: false,
             },
             tooltip: {
-                shared: false,       
+                enabled: true,
+                shared: false,
             },
             colors: colors,
             stroke: {
