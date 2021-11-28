@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import Graph from './Graph'
 import { parseData } from './graphUtil'
 import modelData from './ressources/modelData.json'
+import { showPdf } from './pdfMaker'
 
 const styles = {
     display: "flex",
@@ -56,6 +57,11 @@ export default function App() {
             )
         )
     }
+
+    const handleMakePdf = (event) => {
+        console.log("generating")
+        showPdf()
+    }
     
     return (
         <div>
@@ -80,6 +86,14 @@ export default function App() {
                 >
                     Calculate Offset
                 </Button>
+                <Button 
+                    variant="contained"
+                    style={{margin: "5px"}}
+                    onClick={handleMakePdf}
+                >
+                    Generate PDF
+                </Button>
+                
             </div>
         </div>
     )

@@ -32,7 +32,7 @@ export async function showPdf() {
           fontSize: 20,
         },
         {
-          image: await this.getBase64Image(),
+          image: await getBase64Image(),
         },
       ],
     };
