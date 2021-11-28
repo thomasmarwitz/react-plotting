@@ -91,7 +91,7 @@ export default function App() {
                     Calculate Offset
                 </Button>
                 <Button 
-                    variant="contained"
+                    variant="outlined"
                     style={{margin: "5px"}}
                     onClick={handleMakePdf}
                 >
