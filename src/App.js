@@ -61,6 +61,7 @@ export default function App() {
         <div>
             <Graph 
                 graph={graph}
+                data={DATA}
                 width={"1000"}
                 type={"line"}
             />

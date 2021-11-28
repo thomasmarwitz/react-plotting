@@ -108,6 +108,12 @@ export function parseData(modelData, referenceLine) {
                     enabled: false,
                 },
                 //background: "#000",
+                toolbar: {
+                    show: true,
+                    tools:{
+                      download:false // <== line to add
+                    }
+                  }
             },
             legend: {
                 show: false,
