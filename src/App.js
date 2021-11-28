@@ -25,7 +25,7 @@ const styles = {
     }
     return a;
 }
-const USE_N_MODELS = 20
+const USE_N_MODELS = 100
 const DATA = shuffle(modelData).slice(0, USE_N_MODELS)
 
 export default function App() {
