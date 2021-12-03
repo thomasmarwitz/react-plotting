@@ -10,7 +10,7 @@ function getBase64Image() {
             encodeURIComponent(svgElement.outerHTML);
         var s = new XMLSerializer();
         var str = s.serializeToString(svgElement);
-    
+
         resolve(str)
             /*
           img.onload = ()=> {
@@ -50,18 +50,30 @@ const points = [
     "If you violate these rules, you may be liable for the consequences, which may include your account being suspended and a report being made to your home organisation or to law enforcement.",
 ]
 
+function addViewbox(str) {
+    const lastIndex = str.indexOf("height") + 10
+    const offset = str.substring(lastIndex).indexOf('"') // .indexOf('"')
+    //console.log(str.substring())
+    const insertAt = offset + lastIndex + 2
+
+    //console.log(str.substring(0, insertAt) + `viewBox="0 0 1000 622" ` + str.substring(insertAt))
+    return str.substring(0, insertAt) + `viewBox="0 0 1000 622" ` + str.substring(insertAt)
+    
+
+}
 
 export async function showPdf(models) {
-  console.log(await getBase64Image())
+  const svgAsString = await getBase64Image()
+  
     const docDefinition = {
       content: [
-        /*{
+        {
           text: 'OCTS Plot from 1960 - 2100',
           fontSize: 26,
-        },*/
+        },
         {
-          svg: await getBase64Image(),
-          width: 600,
+          svg: addViewbox(svgAsString),
+          width: 500,
         },
         {
             text: 'List of used models:',
