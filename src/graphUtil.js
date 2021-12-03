@@ -106,12 +106,13 @@ export function parseData(modelData, referenceLine) {
             chart: {
                 animations: {
                     enabled: false,
+                    easing: 'linear'
                 },
                 //background: "#000",
                 toolbar: {
                     show: true,
                     tools:{
-                      download:false // <== line to add
+                      download:true // <== line to add
                     }
                   }
             },

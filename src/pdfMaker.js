@@ -8,7 +8,12 @@ function getBase64Image() {
          const svgElement = document.querySelector('.apexcharts-svg');
          const imageBlobURL = 'data:image/svg+xml;charset=utf-8,' +
             encodeURIComponent(svgElement.outerHTML);
-         img.onload = ()=> {
+        var s = new XMLSerializer();
+        var str = s.serializeToString(svgElement);
+    
+        resolve(str)
+            /*
+          img.onload = ()=> {
             var canvas = document.createElement('canvas');
             canvas.width = img.width;
             canvas.height = img.height;
@@ -21,6 +26,7 @@ function getBase64Image() {
            reject(error);
          };
          img.src = imageBlobURL;
+         */
        });
 }
 
@@ -46,15 +52,16 @@ const points = [
 
 
 export async function showPdf(models) {
+  console.log(await getBase64Image())
     const docDefinition = {
       content: [
-        {
+        /*{
           text: 'OCTS Plot from 1960 - 2100',
           fontSize: 26,
-        },
+        },*/
         {
-          image: await getBase64Image(),
-          width: 500,
+          svg: await getBase64Image(),
+          width: 600,
         },
         {
             text: 'List of used models:',
@@ -65,10 +72,7 @@ export async function showPdf(models) {
         },
         {
             text: legalNoticeHeading,
-            fontSize: 20,
-            startPosition: {
-                pageNumber: 2,
-            }
+            fontSize: 20
         },
         legalNotice,
         {
@@ -76,7 +80,7 @@ export async function showPdf(models) {
         },
       ],
       pageBreakBefore: function(currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) {
-        return currentNode.text == legalNoticeHeading
+        return currentNode.text == legalNoticeHeading || currentNode.text == 'List of used models:'
       }
     };
     pdfmake.createPdf(docDefinition).open();
