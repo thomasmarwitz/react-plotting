@@ -56,7 +56,7 @@ function addViewbox(str) {
     //console.log(str.substring())
     const insertAt = offset + lastIndex + 2
 
-    //console.log(str.substring(0, insertAt) + `viewBox="0 0 1000 622" ` + str.substring(insertAt))
+    console.log(str.substring(0, insertAt) + `viewBox="0 0 1000 622" ` + str.substring(insertAt))
     return str.substring(0, insertAt) + `viewBox="0 0 1000 622" ` + str.substring(insertAt)
     
 

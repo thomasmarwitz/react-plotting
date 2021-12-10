@@ -114,7 +114,11 @@ export function parseData(modelData, referenceLine) {
                     tools:{
                       download:true // <== line to add
                     }
-                  }
+                },
+                zoom: {
+                    enabled: true,
+                    type: 'xy',
+                }
             },
             legend: {
                 show: false,
@@ -130,7 +134,8 @@ export function parseData(modelData, referenceLine) {
             stroke: {
                 width: lineWidth,
                 dashArray: strokes,
-            }
+            },
+            
 
         },
         // .map(value => value.toFixed(2))
